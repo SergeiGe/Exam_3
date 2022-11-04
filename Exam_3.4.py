@@ -46,9 +46,17 @@ class Wildcat(Cat):
             print('Не любит плавать')
 
 class HomeCat(Cat):
-    def __init__(self):
+    def __init__(self, name_cat):
+        super().__init__()
+        self._name_cat = name_cat
+        self.__nagradi = 0
 
+    def uchastie_v_vistavke(self):
+        self.__nagradi += 1
+        return self.__nagradi
 
+    def info(self):
+        print(f'Кличка: {self._name_cat} \nОкрас: {self.color} \nВес: {self.weight}кг \nНаграды {self.__nagradi}')
 
 
 my_cat = Cat()
@@ -56,10 +64,14 @@ my_cat = Cat('Red', '5')
 
 Cat.specifics('White') # обращение к статическому методу
 my_cat.specifics("Red") # обращение к статическому методу
+my_cat.info()
 
 Cat.toy_cat()# обращение к методу класса
 
 my_wildcat = Wildcat('Озеро')
 my_wildcat.like_swimmig()
 
-my_cat.info()
+my_home_cat = HomeCat('Барсик')
+my_home_cat.uchastie_v_vistavke()
+my_home_cat.info()
+
